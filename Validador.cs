@@ -23,6 +23,116 @@ namespace DDTank_Energy_Stone_Calculator
 	/// </summary>
 	public static  class Validador
 	{
+		public static string CheckTExp(string lvlarma)
+		{
+			if ((string.Compare(lvlarma, "+1=>+2", StringComparison.Ordinal) == 0)) 
+			{
+				return "10";
+			}
+			
+			if ((string.Compare(lvlarma, "+2=>+3", StringComparison.Ordinal) == 0)) 
+			{
+				return "50";
+			}
+			
+			if ((string.Compare(lvlarma, "+3=>+4", StringComparison.Ordinal) == 0)) 
+			{
+				return "150";
+			}
+			
+			if ((string.Compare(lvlarma, "+4=>+5", StringComparison.Ordinal) == 0)) 
+			{
+				return "700";
+			}
+			
+			if ((string.Compare(lvlarma, "+5=>+6", StringComparison.Ordinal) == 0)) 
+			{
+				return "1500";
+			}
+			
+			if ((string.Compare(lvlarma, "+6=>+7", StringComparison.Ordinal) == 0)) 
+			{
+				return "2300";
+			}
+			
+			if ((string.Compare(lvlarma, "+7=>+8", StringComparison.Ordinal) == 0)) 
+			{
+				return "3300";
+			}
+			
+			if ((string.Compare(lvlarma, "+8=>+9", StringComparison.Ordinal) == 0)) 
+			{
+				return "4500";
+			}
+			
+			if ((string.Compare(lvlarma, "+9=>+10", StringComparison.Ordinal) == 0)) 
+			{
+				return "6000";
+			}
+			
+			if ((string.Compare(lvlarma, "+10=>+11", StringComparison.Ordinal) == 0)) 
+			{
+				return "7500";
+			}
+			
+			if ((string.Compare(lvlarma, "+11=>+12", StringComparison.Ordinal) == 0)) 
+			{
+				return "9000";
+			}
+			return "0";
+		}
+		public static double CheckVip(string viparma)
+		{
+			if ((string.Compare(viparma, "VIP1", StringComparison.Ordinal) == 0)) 
+			{
+				return 0.25;
+			}
+			if ((string.Compare(viparma, "VIP2", StringComparison.Ordinal) == 0)) 
+			{
+				return 0.25;
+			}
+			if ((string.Compare(viparma, "VIP3", StringComparison.Ordinal) == 0)) 
+			{
+				return 0.25;
+			}
+			if ((string.Compare(viparma, "VIP4", StringComparison.Ordinal) == 0)) 
+			{
+				return 0.35;
+			}
+			if ((string.Compare(viparma, "VIP5", StringComparison.Ordinal) == 0)) 
+			{
+				return 0.35;
+			}
+			if ((string.Compare(viparma, "VIP6", StringComparison.Ordinal) == 0)) 
+			{
+				return 0.25;
+			}
+			if ((string.Compare(viparma, "VIP7", StringComparison.Ordinal) == 0)) 
+			{
+				return 0.50;
+			}
+			if ((string.Compare(viparma, "VIP8", StringComparison.Ordinal) == 0)) 
+			{
+				return 0.50;
+			}
+			if ((string.Compare(viparma, "VIP9", StringComparison.Ordinal) == 0)) 
+			{
+				return 0.50;
+			}
+			if ((string.Compare(viparma, "VIP10", StringComparison.Ordinal) == 0)) 
+			{
+				return 0.50;
+			}
+			if ((string.Compare(viparma, "VIP11", StringComparison.Ordinal) == 0)) 
+			{
+				return 0.50;
+			}
+			if ((string.Compare(viparma, "VIP12", StringComparison.Ordinal) == 0)) 
+			{
+				return 0.50;
+			}
+			return 0.0;
+		}
 		public static bool Numerico(string e)
 		{
 			const string _Numeros = "1234567890\b";
