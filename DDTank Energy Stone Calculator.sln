@@ -1,0 +1,18 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+# SharpDevelop 5.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DDTank Energy Stone Calculator", "DDTank Energy Stone Calculator.csproj", "{ABBA8BF2-6BC0-43D1-AA08-F2A68E380EBD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ABBA8BF2-6BC0-43D1-AA08-F2A68E380EBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABBA8BF2-6BC0-43D1-AA08-F2A68E380EBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABBA8BF2-6BC0-43D1-AA08-F2A68E380EBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABBA8BF2-6BC0-43D1-AA08-F2A68E380EBD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
