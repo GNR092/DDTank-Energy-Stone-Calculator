@@ -105,7 +105,7 @@ namespace DDTank_Energy_Stone_Calculator
 			}
 			if ((string.Compare(viparma, "VIP6", StringComparison.Ordinal) == 0)) 
 			{
-				return 0.25;
+				return 0.35;
 			}
 			if ((string.Compare(viparma, "VIP7", StringComparison.Ordinal) == 0)) 
 			{
@@ -136,18 +136,16 @@ namespace DDTank_Energy_Stone_Calculator
 		public static bool Numerico(string e)
 		{
 			const string _Numeros = "1234567890\b";
-			bool _Existe;
 			
-			_Existe = _Numeros.Contains(e);
-			if (!_Existe)
+			if (!_Numeros.Contains(e))
 				return true;
 			return false;
 		}
 		public static bool borrar(string e)
 		{
 			const string _borrar = "\b\r";
-			bool _existe = _borrar.Contains(e);
-			if (!_existe)
+			
+			if (!_borrar.Contains(e))
 				return true;
 			else
 				return true;
