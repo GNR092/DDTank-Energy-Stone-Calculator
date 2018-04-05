@@ -42,31 +42,31 @@ namespace DDTank_Energy_Stone_Calculator
             }
         }
         #endregion
+
         private const int EnergyStone = 10;
-        private double r;
-        private string lvlarma;
-        private string viparma;
-        private string _TExp;
+        private int _TExp;
         private double _vip;
-        private string _GuildBonus;
-        private string _Exp;
+        private int _GuildBonus;
+        private int _Exp;
+
+        DDTClass DDTank;
         public MainForm()
         {
             InitializeComponent();
+            DDTank = new DDTClass();
             lb_BasicValue.Text = EnergyStone.ToString();
         }
         #region Niveles de arma
         void ComboBox1TextUpdate(object sender, EventArgs e)
-        {
-            lvlarma = weaponlvl.Text;
-            _TExp = Validador.CheckTExp(lvlarma);
+        { 
+            _TExp = Validador.CheckTExp(weaponlvl.Text);
+            
         }
         #endregion
         #region ZonaVip
         void ZonaVip(object sender, EventArgs e)
         {
-            viparma = cb_vip.Text;
-            _vip = Validador.CheckVip(viparma);
+            _vip = Validador.CheckVip(cb_vip.Text);
             if (string.IsNullOrEmpty(weaponlvl.Text))
             {
                 lb_VIP.Text = "0";
@@ -81,8 +81,7 @@ namespace DDTank_Energy_Stone_Calculator
         }
         void ZonaVip()
         {
-            viparma = cb_vip.Text;
-            _vip = Validador.CheckVip(viparma);
+            _vip = Validador.CheckVip(cb_vip.Text);
             if (string.IsNullOrEmpty(weaponlvl.Text))
             {
                 lb_VIP.Text = "0";
@@ -122,44 +121,20 @@ namespace DDTank_Energy_Stone_Calculator
             }
         }
         #endregion
-        #region Calculando
-        private void CalcularBonus(int _exp, int _Texp, int _Gbonus)
-        {
-            int _r;
-            if (check_Vip.Checked)
-            {
-                double vip = EnergyStone * _vip;
-                _r = _Texp - _exp;
-                r = _r / (EnergyStone + vip + _Gbonus);
-                if (r <= 0)
-                    txt_resultado.Text = Convert.ToString("1");
-                else
-                    txt_resultado.Text = Convert.ToInt32(Math.Round(r)).ToString();
-            }
-            else
-            {
-                _r = _Texp - _exp;
-                r = _r / (EnergyStone + _Gbonus);
-                if (r <= 0)
-                    txt_resultado.Text = Convert.ToString("1");
-                else
-                    txt_resultado.Text = Convert.ToInt32(Math.Round(r)).ToString();
-            }
-        }
-        #endregion
+       
         #region CambioDeTexto
         private void Txt_gbonusTextChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txt_gbonus.Text))
             {
-                _GuildBonus = "0";
-                txt_gbonus.Text = _GuildBonus;
-                lb_GuildBonus.Text = _GuildBonus;
+                _GuildBonus = 0;
+                txt_gbonus.Text = _GuildBonus.ToString();
+                lb_GuildBonus.Text = _GuildBonus.ToString();
                 lb_GuildBonus.Update();
             }
             else
             {
-                _GuildBonus = txt_gbonus.Text;
+                _GuildBonus = int.Parse(txt_gbonus.Text);
                 lb_GuildBonus.Text = txt_gbonus.Text;
                 lb_GuildBonus.Update();
             }
@@ -169,31 +144,32 @@ namespace DDTank_Energy_Stone_Calculator
         {
             if (string.IsNullOrEmpty(txt_exp.Text))
             {
-                _Exp = "0";
-                txt_exp.Text = _Exp;
+                _Exp = 0;
+                txt_exp.Text = _Exp.ToString();
 
             }
             if (Convert.ToInt32(txt_exp.Text) > Convert.ToInt32(_TExp))
             {
-                txt_exp.Text = _TExp;
+                txt_exp.Text = _TExp.ToString();
             }
             if (!string.IsNullOrEmpty(txt_exp.Text))
             {
-                _Exp = txt_exp.Text;
+                _Exp = int.Parse(txt_exp.Text);
             }
+            pbar_exp.Value = _Exp;
         }
         #endregion
         #region Check
         private void Btn_CheckClick(object sender, EventArgs e)
         {
-            _GuildBonus = txt_gbonus.Text;
+            _GuildBonus = int.Parse(txt_gbonus.Text);
             try
             {
                 if (string.IsNullOrEmpty(weaponlvl.Text))
                     MessageBox.Show("Seleciona el nivel del arma", "Seleciona Un Nivel", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
                 {
-                    CalcularBonus(int.Parse(_Exp), int.Parse(_TExp), int.Parse(_GuildBonus));
+                    txt_resultado.Text = DDTClass.CalcularBonus(_Exp, _TExp, _GuildBonus, _vip, check_Vip.Checked).ToString();
                 }
             }
             catch (Exception)
@@ -211,12 +187,11 @@ namespace DDTank_Energy_Stone_Calculator
         #endregion
         private void _timerTick(object sender, EventArgs e)
         {
-            int GBonus = 0;
-            int.TryParse(_GuildBonus, out GBonus);
+            DDTank.Check(weaponlvl.Text, txt_exp.Text, txt_gbonus.Text, cb_vip.Text, cb_vip.Enabled);
+
             if(cb_vip.Enabled)
             {
-                viparma = cb_vip.Text;
-                _vip = Validador.CheckVip(viparma);
+                _vip = Validador.CheckVip(cb_vip.Text);
                 lb_VIP.Text = (EnergyStone * _vip).ToString();
                 lb_VIP.Update();
             }
@@ -227,7 +202,7 @@ namespace DDTank_Energy_Stone_Calculator
                 lb_VIP.Update();
             }
             lb_GuildBonus.Update();
-            lb_TotalValue.Text = (EnergyStone + GBonus + vip).ToString();
+            lb_TotalValue.Text = (EnergyStone + _GuildBonus + vip).ToString();
             lb_TotalValue.Update();
 
         }
@@ -242,6 +217,11 @@ namespace DDTank_Energy_Stone_Calculator
         void LinkLabel1LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void weaponlvl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            pbar_exp.Maximum = _TExp;
         }
     }
 }
