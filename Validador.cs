@@ -23,66 +23,133 @@ namespace DDTank_Energy_Stone_Calculator
 	/// </summary>
 	public static  class Validador
 	{
-		public static string CheckTExp(string lvlarma)
+        private const int EnergyStone = 10;
+        public static int CheckTExp(string lvlarma)
 		{
 			if ((string.Compare(lvlarma, "+1=>+2", StringComparison.Ordinal) == 0)) 
 			{
-				return "10";
+				return 10;
 			}
 			
 			if ((string.Compare(lvlarma, "+2=>+3", StringComparison.Ordinal) == 0)) 
 			{
-				return "50";
+				return 50;
 			}
 			
 			if ((string.Compare(lvlarma, "+3=>+4", StringComparison.Ordinal) == 0)) 
 			{
-				return "150";
+				return 150;
 			}
 			
 			if ((string.Compare(lvlarma, "+4=>+5", StringComparison.Ordinal) == 0)) 
 			{
-				return "700";
+				return 700;
 			}
 			
 			if ((string.Compare(lvlarma, "+5=>+6", StringComparison.Ordinal) == 0)) 
 			{
-				return "1500";
+				return 1500;
 			}
 			
 			if ((string.Compare(lvlarma, "+6=>+7", StringComparison.Ordinal) == 0)) 
 			{
-				return "2300";
+				return 2300;
 			}
 			
 			if ((string.Compare(lvlarma, "+7=>+8", StringComparison.Ordinal) == 0)) 
 			{
-				return "3300";
+				return 3300;
 			}
 			
 			if ((string.Compare(lvlarma, "+8=>+9", StringComparison.Ordinal) == 0)) 
 			{
-				return "4500";
+				return 4500;
 			}
 			
 			if ((string.Compare(lvlarma, "+9=>+10", StringComparison.Ordinal) == 0)) 
 			{
-				return "6000";
+				return 6000;
 			}
 			
 			if ((string.Compare(lvlarma, "+10=>+11", StringComparison.Ordinal) == 0)) 
 			{
-				return "7500";
+				return 7500;
 			}
 			
 			if ((string.Compare(lvlarma, "+11=>+12", StringComparison.Ordinal) == 0)) 
 			{
-				return "9000";
+				return 9000;
 			}
-			return "0";
+			return 0;
 		}
-		public static double CheckVip(string viparma)
+        public static int CheckWExp(string lvlarma)
+        {
+            if (string.IsNullOrEmpty(lvlarma))
+            {
+                lvlarma = "+1=>+2";
+            }
+            if ((string.Compare(lvlarma, "+1=>+2", StringComparison.Ordinal) == 0))
+            {
+                return 10;
+            }
+
+            if ((string.Compare(lvlarma, "+2=>+3", StringComparison.Ordinal) == 0))
+            {
+                return 50;
+            }
+
+            if ((string.Compare(lvlarma, "+3=>+4", StringComparison.Ordinal) == 0))
+            {
+                return 150;
+            }
+
+            if ((string.Compare(lvlarma, "+4=>+5", StringComparison.Ordinal) == 0))
+            {
+                return 700;
+            }
+
+            if ((string.Compare(lvlarma, "+5=>+6", StringComparison.Ordinal) == 0))
+            {
+                return 1500;
+            }
+
+            if ((string.Compare(lvlarma, "+6=>+7", StringComparison.Ordinal) == 0))
+            {
+                return 2300;
+            }
+
+            if ((string.Compare(lvlarma, "+7=>+8", StringComparison.Ordinal) == 0))
+            {
+                return 3300;
+            }
+
+            if ((string.Compare(lvlarma, "+8=>+9", StringComparison.Ordinal) == 0))
+            {
+                return 4500;
+            }
+
+            if ((string.Compare(lvlarma, "+9=>+10", StringComparison.Ordinal) == 0))
+            {
+                return 6000;
+            }
+
+            if ((string.Compare(lvlarma, "+10=>+11", StringComparison.Ordinal) == 0))
+            {
+                return 7500;
+            }
+
+            if ((string.Compare(lvlarma, "+11=>+12", StringComparison.Ordinal) == 0))
+            {
+                return 9000;
+            }
+            return 0;
+        }
+        public static double CheckVip(string viparma)
 		{
+            if (string.IsNullOrEmpty(viparma))
+            {
+                return 0.25;
+            }
 			if ((string.Compare(viparma, "VIP1", StringComparison.Ordinal) == 0)) 
 			{
 				return 0.25;
@@ -150,5 +217,5 @@ namespace DDTank_Energy_Stone_Calculator
 			else
 				return true;
 		}
-	}
+    }
 }
