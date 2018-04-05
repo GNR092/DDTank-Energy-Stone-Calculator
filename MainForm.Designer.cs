@@ -232,6 +232,7 @@ namespace DDTank_Energy_Stone_Calculator
             this.weaponlvl.Name = "weaponlvl";
             this.weaponlvl.Size = new System.Drawing.Size(87, 22);
             this.weaponlvl.TabIndex = 31;
+            this.weaponlvl.SelectedIndexChanged += new System.EventHandler(this.weaponlvl_SelectedIndexChanged);
             this.weaponlvl.TextChanged += new System.EventHandler(this.ComboBox1TextUpdate);
             // 
             // cb_vip
@@ -256,7 +257,7 @@ namespace DDTank_Energy_Stone_Calculator
             "VIP10",
             "VIP11",
             "VIP12"});
-            this.cb_vip.Location = new System.Drawing.Point(228, 184);
+            this.cb_vip.Location = new System.Drawing.Point(228, 213);
             this.cb_vip.Name = "cb_vip";
             this.cb_vip.Size = new System.Drawing.Size(87, 22);
             this.cb_vip.TabIndex = 45;
@@ -282,7 +283,7 @@ namespace DDTank_Energy_Stone_Calculator
             this.check_Vip.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
             this.check_Vip.ForeColor = System.Drawing.Color.PaleGoldenrod;
             this.check_Vip.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.check_Vip.Location = new System.Drawing.Point(144, 181);
+            this.check_Vip.Location = new System.Drawing.Point(144, 210);
             this.check_Vip.Name = "check_Vip";
             this.check_Vip.Size = new System.Drawing.Size(78, 24);
             this.check_Vip.TabIndex = 42;
@@ -297,7 +298,7 @@ namespace DDTank_Energy_Stone_Calculator
             this.label7.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
             this.label7.ForeColor = System.Drawing.Color.PaleGoldenrod;
             this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label7.Location = new System.Drawing.Point(146, 143);
+            this.label7.Location = new System.Drawing.Point(146, 172);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(76, 14);
             this.label7.TabIndex = 40;
@@ -351,7 +352,7 @@ namespace DDTank_Energy_Stone_Calculator
             // 
             this.txt_gbonus.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold);
             this.txt_gbonus.ForeColor = System.Drawing.Color.Black;
-            this.txt_gbonus.Location = new System.Drawing.Point(228, 140);
+            this.txt_gbonus.Location = new System.Drawing.Point(228, 169);
             this.txt_gbonus.Name = "txt_gbonus";
             this.txt_gbonus.Size = new System.Drawing.Size(110, 20);
             this.txt_gbonus.TabIndex = 41;
@@ -401,7 +402,7 @@ namespace DDTank_Energy_Stone_Calculator
             // 
             // pbar_exp
             // 
-            this.pbar_exp.Location = new System.Drawing.Point(60, 236);
+            this.pbar_exp.Location = new System.Drawing.Point(60, 135);
             this.pbar_exp.Name = "pbar_exp";
             this.pbar_exp.Size = new System.Drawing.Size(309, 10);
             this.pbar_exp.TabIndex = 49;
